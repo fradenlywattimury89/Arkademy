@@ -14,19 +14,7 @@
 <body>
 
 <!-- PHP Include Koneksi -->
-	<?php
-		// include("config/koneksi.php");
 
-
-		// $sql = "SELECT name from product";
-		// // $sql = "SELECT c.name cashier,p.name,k.name category,p.price
-		// // 		FROM product p
-		// // 		LEFT JOIN category k USING (id_category)
-		// // 		LEFT JOIN cashier c USING (id_cashier);
-		// // 		";
-		// $hasil = mysqli_query($config, $sql) or exit("Error query: <b>".$sql."</b>.");
-		// 	while($data = mysqli_fetch_assoc($hasil)){
-	?>
 
 <!-- Header -->
 
@@ -98,7 +86,7 @@
 
 	</div>
 
-<!-- Table COntainer  -->
+<!-- Table Container  -->
 	<div class="limiter">
 		<div class="container-table100">
 			<div class="wrap-table100">
@@ -113,17 +101,37 @@
 							<div class="cell"> Action </div>
 						</div>
 
+						<?php
+							
+							include("config/koneksi.php");
+
+
+							// $sql = "SELECT name from product";
+							$index = 0;
+							$sql = "SELECT c.name cashier,p.name,k.name category,p.price
+							 		FROM product p
+							 		LEFT JOIN category k USING (id_category)
+							 		LEFT JOIN cashier c USING (id_cashier);
+							 		";
+							$hasil = mysqli_query($config, $sql) or exit("Error query: <b>".$sql."</b>.");
+							 
+							 // $data = mysqli_fetch_assoc($hasil)
+							 while($data = mysqli_fetch_assoc($hasil)){
+							 	$index++;
+						?>
+
 						<div class="row">
-							<div class="cell" data-title="No"> 1 </div>
-							<div class="cell" data-title="Cashier"> Cashier  </div>
-							<div class="cell" data-title="Product"> Product </div>
-							<div class="cell" data-title="Category"> Category </div>
-							<div class="cell" data-title="Price"> Rp Price </div>
+							<div class="cell" data-title="No"> <?php echo $index ?></div>
+							<div class="cell" data-title="Cashier"> <?php echo $data['cashier']; ?>  </div>
+							<div class="cell" data-title="Product"> <?php echo $data['name']; ?> </div>
+							<div class="cell" data-title="Category"> <?php echo $data['category']; ?> </div>
+							<div class="cell" data-title="Price"> Rp. <?php echo $data['price']; ?> </div>
 							<div class="cell" data-title="Action">
-				 				<a class="mr-1" href=""> Edit </a> <span> | </span>
-				 				<a class="ml-1" href=""> Delete </a>  
+				 				<a class="mr-1" href="" style="font-family: 'Airbnb'; color: #ACE087;"> Edit </a> <span> | </span>
+				 				<a class="ml-1" href="" style="font-family: 'Airbnb'; color: #FF8FB2;"> Delete </a>  
 							</div>
 						</div>
+						<?php } ?>
 			</div>
 
 	</div>
