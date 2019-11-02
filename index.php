@@ -108,7 +108,7 @@
 
 							// $sql = "SELECT name from product";
 							$index = 0;
-							$sql = "SELECT c.name cashier,p.name,k.name category,p.price
+							$sql = "SELECT p.id,c.name cashier,p.name,k.name category,p.price
 							 		FROM product p
 							 		LEFT JOIN category k USING (id_category)
 							 		LEFT JOIN cashier c USING (id_cashier);
@@ -128,7 +128,7 @@
 							<div class="cell" data-title="Price"> Rp. <?php echo $data['price']; ?> </div>
 							<div class="cell" data-title="Action">
 				 				<a class="mr-1" href="" style="font-family: 'Airbnb'; color: #ACE087;"> Edit </a> <span> | </span>
-				 				<a class="ml-1" href="" style="font-family: 'Airbnb'; color: #FF8FB2;"> Delete </a>  
+				 				<a class="ml-1" href="delete.php?id=<?php echo $data['id']; ?>" style="font-family: 'Airbnb'; color: #FF8FB2;"> Delete </a>  
 							</div>
 						</div>
 						<?php } ?>
