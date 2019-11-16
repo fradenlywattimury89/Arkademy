@@ -19,7 +19,7 @@
 <!-- Header -->
 
 	<div class="top-container container-fluid">
-		<img class="img-top" src="https://s3-alpha-sig.figma.com/img/c575/73ce/d686cee9b4fecf36a1e813792073bdb0?Expires=1573430400&Signature=WDbTs~ba9g4W5GtzUlw3ucdu536JoSkAK4fUUPLz3Qdv7-9Y0Q3yswFAaneRZHVHpmMbM7-UfneVwmC00RhPHNhVVe9B7cUmELrSxOUL2SRp4Y2XGAfwQGd01W1rXuXnJubZJ2H1RO9jKdTLV0qBfpNmDtUcf2vbA-yAfaH6jvJDmMxg4-RmZ91qDWmUwMm4fZJOprj9eSePUJO7OHqN33-t8UleoD0C6F8g~XMaR2Y0zp9j3uQNrzNiDndYtKi8~7iUhED9vX888HDmjsuTFqXASju8yljPL9vA5xDhfwnAhrQOt2odg0YcedLaXZ8HChU6kKZW0qrjOL9EHojlsQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA">
+		<img class="img-top" src="img/1_7ugSMISUo8vYf9ILG6VmuQ.png">
 
 		<p class="header-top d-inline"> <span style="color:#FF8FB2">ARKADEMY</span> COFFEE SHOP </p>
 
@@ -41,50 +41,55 @@
 					</div>
 				<div class="modal-body" style="font-family: 'Airbnb';">
 					
-					<form>						
+					<form action="penambah.php" method="post">						
 						<div class="form-group">
 						<label>Cashier</label>
-							<input type="text" class="form-control" placeholder="Input Nama Cashier">
+							<select class="form-control" name="nama_cashier">
+								<option value ="1"> Raisa Andriana</option>
+								<option value ="2"> Pevita Pearce</option>
+								<option value ="3"> Fradenly </option>
+							</select>
 						</div>
 						  
 						<div class="form-group">
 							<label>Product</label>
-							<select class="form-control">
-								<option selected>-- Pilih Product --</option>
+							<select class="form-control" name="product">
+								<option>Ice Tea</option>
 							  	<option>Latte</option>
 							  	<option>Cake</option>
 							  	<option>Fried Rice</option>
 							  	<option>Gudeg</option>
-							  	<option>Ice Tea</option>
 							</select>
 						</div>
 						<div class="form-group">
 							<label>Category</label>
-							<select class="form-control">
-								<option selected>-- Pilih Category --</option>
-							  	<option>Drink</option>
-							  	<option>Food</option>
+							<select class="form-control" name="category">
+								<option value ="1"> Drink </option>
+								<option value ="2"> Food </option>
 							</select>
 						</div>
 						
-
 						<div class="form-group">
 						<label>Price</label>
-							<input class="form-control" type="text" placeholder="Rp."> 
+							<input class="form-control" type="text" placeholder="Rp.10000" name="price"> 
 						</div>
-					</form>
+					
 
-				</div>
-		
-				<div class="modal-footer">
-					<button type="button" class="btn mr-3"> ADD </button>
-				</div>
+						</div>
+				
+						<div class="modal-footer">
+							<button type="submit" class="btn mr-3" name="submit"> ADD </button>
+						</div>
+				</form>
 			</div>
 		
 			</div>
 		</div>
 
 	</div>
+
+<!-- Modal Alert -->
+
 
 <!-- Table Container  -->
 	<div class="limiter">
@@ -100,6 +105,8 @@
 							<div class="cell"> Price </div>
 							<div class="cell"> Action </div>
 						</div>
+
+						<!-- PHP Include Koneksi -->
 
 						<?php
 							
@@ -127,7 +134,7 @@
 							<div class="cell" data-title="Category"> <?php echo $data['category']; ?> </div>
 							<div class="cell" data-title="Price"> Rp. <?php echo $data['price']; ?> </div>
 							<div class="cell" data-title="Action">
-				 				<a class="mr-1" href="" style="font-family: 'Airbnb'; color: #ACE087;"> Edit </a> <span> | </span>
+				 				<a class="mr-1" href="" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat" style="font-family:'Airbnb'; color: #ACE087;"> Edit </a> <span> | </span>
 				 				<a class="ml-1" href="delete.php?id=<?php echo $data['id']; ?>" style="font-family: 'Airbnb'; color: #FF8FB2;"> Delete </a>  
 							</div>
 						</div>
@@ -135,6 +142,11 @@
 			</div>
 
 	</div>
+
+<!-- Modal Edit -->
+
+
+
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
